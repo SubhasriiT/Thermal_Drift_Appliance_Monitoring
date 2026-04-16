@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.ensemble import IsolationForest
 
 # Load Dataset
-df = pd.read_csv("C:/Users/subha/temperature_data.csv")  # <-- your CSV path
+df = pd.read_csv("C:/Users/subha/temperature_data.csv")
 print(df.head())
 print(df.info())
 if 'Timestamp' not in df.columns:
