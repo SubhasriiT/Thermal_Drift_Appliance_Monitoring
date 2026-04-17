@@ -3,8 +3,6 @@
 An IoT + Machine Learning project that detects early signs of appliance failure
 by monitoring temperature patterns using Arduino and an unsupervised ML model.
 
-> Done as part of a **Final Year Project** at **[Your College Name]**
-
 ## Description
 
 This project monitors real-time temperature data from an appliance (iron box) using
@@ -23,23 +21,27 @@ needing labeled data.
 - **Language:** Python, Arduino (C++)
 - **Libraries:** pandas, numpy, matplotlib, scikit-learn
 - **ML Model:** Isolation Forest (Unsupervised Anomaly Detection)
-- **Environment:** Arduino IDE 2.3.6, Python
+- **Environment:** Arduino IDE 2.3.6, Python IDLE 3.11.9
 
 ## Project Structure
 
 ```
-thermal-drift-monitoring/
+Thermal_Drift_Appliance_Monitoring/
 │
 ├── README.md
-├── iot_project.ino               # Arduino sketch for data collection
-├── iot_project_code.py           # ML analysis and alert system
-├── images/
-│   ├── hardware_setup.jpg        # Arduino + DHT11 + iron box
-│   ├── live_simulation.jpg       # Live monitoring in Arduino IDE
-│   ├── thermal_drift_graph.png   # Normal vs drifted temperature
-│   └── anomaly_detection.png     # Isolation Forest anomaly plot
+├── Thermal_monitor.ino          # Arduino sketch for data collection
+├── Thermal_Analysis.py          # ML analysis and alert system
+├── Live_Simulation.py           # Live thermometer simulation (no hardware needed)
+├── Images/
+│   ├── hardware_setup.jpg       # Arduino + DHT11 + iron box photo
+│   ├── live_simulation.png      # Live thermometer bar simulation output
+│   ├── thermal_drift_graph.png  # Normal vs drifted temperature graph
+│   ├── anomaly_detection.png    # Isolation Forest anomaly plot
+│   ├── rolling_mean_trend.png   # Rolling mean trend graph
+│   ├── alert_trigger.png        # Thermal drift detection with alert trigger
+│   └── console_output.png       # IDLE shell console output
 └── data/
-    └── temperature_readings.csv  # Collected sensor data (782 readings)
+    └── Temperature_data.csv     # Collected sensor data (782 readings)
 ```
 
 ## Hardware Setup
@@ -47,7 +49,7 @@ thermal-drift-monitoring/
 The DHT11 sensor is connected to the Arduino Uno and placed near the iron box
 to capture real-time surface temperature readings.
 
-![Hardware Setup](images/hardware_setup.jpg)
+![Hardware Setup](Images/Hardware_Setup.jpg)
 
 **Connections:**
 - DHT11 VCC → Arduino 5V
@@ -59,41 +61,35 @@ to capture real-time surface temperature readings.
 The Arduino IDE Serial Monitor streams real-time temperature readings at 9600 baud.
 The red LED indicates an alert trigger when thermal drift is detected.
 
-![Live Simulation](images/live_simulation.jpg)
+![Live Simulation](Images/Live_Simulation.png)
 
 ## Installation
 
 To run this project locally:
 
 1. Clone the repository:
-```
-   git clone https://github.com/[your-username]/thermal-drift-monitoring.git
-```
+git clone https://github.com/SubhasriiT/Thermal_Drift_Appliance_Monitoring.git
 
 2. Navigate to the project folder:
-```
-   cd thermal-drift-monitoring
-```
+cd Thermal_Drift_Appliance_Monitoring
 
 3. Install required Python libraries:
-```
-   pip install pandas numpy matplotlib scikit-learn
-```
+pip install pandas numpy matplotlib scikit-learn
 
 4. Upload the Arduino sketch to your board using **Arduino IDE**:
-   - Open `iot_project.ino`
+   - Open `Thermal_monitor.ino`
    - Select **Arduino Uno** and your COM port
    - Click **Upload**
 
 ## Usage
 
 1. Run the Arduino sketch → temperature readings stream via Serial Monitor
-2. Save the readings to `data/temperature_readings.csv`
-3. Run the Python script:
-```
-   python iot_project_code.py
-```
-4. The system will:
+2. Save the readings to `data/Temperature_data.csv`
+3. Run the main analysis script:
+python Thermal_Analysis.py
+4. To run the live simulation without hardware:
+python Live_Simulation.py
+5. The system will:
    - Plot normal vs thermally drifted temperature trends
    - Detect anomalies using Isolation Forest
    - Trigger visual, console, and **audio (1 kHz beep)** alerts
@@ -101,10 +97,19 @@ To run this project locally:
 ## Results
 
 ### Temperature with Simulated Thermal Drift
-![Thermal Drift Graph](images/thermal_drift_graph.png)
+![Thermal Drift Graph](Images/Thermal_Drift_Graph.png)
 
 ### Isolation Forest Anomaly Detection
-![Anomaly Detection](images/anomaly_detection.png)
+![Anomaly Detection](Images/Anomaly_Detection.png)
+
+### Rolling Mean Trend Showing Thermal Drift
+![Rolling Mean](Images/Rolling_Mean_Trend.png)
+
+### Thermal Drift Detection with Alert Trigger
+![Alert Trigger](Images/Alert_Trigger.png)
+
+### Console Output
+![Console Output](Images/Console_Output.png)
 
 | Metric | Value |
 |---|---|
@@ -118,8 +123,8 @@ To run this project locally:
 | Time Range | Status | Description |
 |---|---|---|
 | 000–016 | 🔵 NORMAL | Blue thermometer, within safe range |
-| 017–022 | 🟡 WARNING | Yellow, nearing alert threshold |
-| 023+ | 🔴 ALERT | Red, thermal drift confirmed |
+| 017–022 | 🟡 WARNING | Nearing alert threshold |
+| 023+ | 🔴 ALERT | Thermal drift confirmed |
 
 ## Key Features
 
@@ -147,6 +152,8 @@ and is intended for educational purposes.
 
 For any queries or suggestions, feel free to reach out:
 
-**Name:** [Your Name]
-**Email:** [your-email@gmail.com]
-**GitHub:** [your-username](https://github.com/your-username)
+**Name:** Subhasri
+
+**Email:** ktsubhasri2005@gmail.com
+
+**GitHub:** [SubhasriiT](https://github.com/SubhasriiT)
